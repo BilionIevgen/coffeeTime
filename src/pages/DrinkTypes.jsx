@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setActiveCatalog } from "../redux/actions/catalog";
+import PropTypes from "prop-types";
 
 export default function DrinkType({ type }) {
   // type =(coffee/tea)
@@ -24,6 +25,10 @@ export default function DrinkType({ type }) {
                 ? history.push("/tea-type" + item.type)
                 : history.push("/coffee-type" + item.type);
               dispatch(setActiveCatalog(item.name));
+              window.localStorage.setItem(
+                "catalogName",
+                JSON.stringify(item.name)
+              );
             }}
             className="coffee__type"
             key={item.id}
@@ -36,3 +41,7 @@ export default function DrinkType({ type }) {
     </div>
   );
 }
+
+DrinkType.propTypes = {
+  type: PropTypes.object.isRequired,
+};

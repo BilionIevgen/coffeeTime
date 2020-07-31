@@ -11,7 +11,8 @@ import {
   addToFavourite,
   removeFromFavourite,
 } from "../redux/actions/favourite";
-import TypeItem from "./TypeItem";
+import DrinkTypeItem from "./DrinkTypeItem";
+import PropTypes from "prop-types";
 
 const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
   const dispatch = useDispatch();
@@ -59,17 +60,38 @@ const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
   };
 
   // adding to favourite list
-  const onAddToFavouriteClick = (id) => {
-    dispatch(addToFavourite(id));
+  const onAddToFavouriteClick = (item) => {
+    dispatch(addToFavourite(item));
+    let localArr =
+      window.localStorage.getItem("favourite") == null
+        ? [item]
+        : [...JSON.parse(window.localStorage.getItem("favourite")), item];
+
+    window.localStorage.setItem("favourite", JSON.stringify(localArr));
   };
 
   // removing from favourite list
-  const onRemoveFromFavouriteClick = (id) => {
-    dispatch(removeFromFavourite(id));
+  const onRemoveFromFavouriteClick = (item) => {
+    dispatch(removeFromFavourite(item));
+    let localArr = JSON.parse(window.localStorage.getItem("favourite")).filter(
+      (it) => {
+        return it.id !== item.id;
+      }
+    );
+
+    window.localStorage.setItem("favourite", JSON.stringify(localArr));
   };
 
   // adding to cart
   const onAddToCartButtonClick = (item) => {
+    let localArr =
+      window.localStorage.getItem("cart") == null
+        ? [item]
+        : [
+            ...JSON.parse(window.localStorage.getItem("cart")),
+            { ...item, uniqId: Math.random() * 100 },
+          ];
+    window.localStorage.setItem("cart", JSON.stringify(localArr));
     dispatch(isAddingToCart(true));
     dispatch(addActiveCartButton(item.id));
     setTimeout(() => {
@@ -98,7 +120,7 @@ const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
 
       <div className="coffee__type-items">
         {initialDrinkItems.map((item) => (
-          <TypeItem
+          <DrinkTypeItem
             activeCartButton={activeCartButton}
             isAddingtoCart={isAddingtoCart}
             isAdmin={isAdmin}
@@ -116,3 +138,9 @@ const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
   );
 };
 export default SortMenu;
+
+SortMenu.protoType = {
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeCartButton: PropTypes.object.isRequired,
+  isAddingtoCart: PropTypes.bool.isRequired,
+};

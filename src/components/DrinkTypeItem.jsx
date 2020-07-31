@@ -1,5 +1,6 @@
 import React from "react";
 import FavouriteButton from "./FavouriteButton";
+import PropTypes from "prop-types";
 
 const TypeItem = ({
   onRemoveFromFavouriteClick,
@@ -10,7 +11,6 @@ const TypeItem = ({
   img,
   isAdmin,
   activeCartButton,
-  isAddingtoCart,
 }) => {
   return (
     <div className="coffee__type-item " key={item.id}>
@@ -45,3 +45,14 @@ const TypeItem = ({
 };
 
 export default TypeItem;
+
+TypeItem.protoType = {
+  onRemoveFromFavouriteClick: PropTypes.func.isRequired,
+  onAddToFavouriteClick: PropTypes.func.isRequired,
+  favourite: PropTypes.arrayOf(PropTypes.object).isRequired,
+  item: PropTypes.object.isRequired,
+  onAddToCartButtonClick: PropTypes.func.isRequired,
+  img: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  activeCartButton: PropTypes.object.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function FavouriteButton({
   array,
@@ -6,9 +7,15 @@ export default function FavouriteButton({
   onAddToFavouriteClick,
   item,
 }) {
+  // checking favourite in localStorage
+  let favouriteCatalog =
+    JSON.parse(window.localStorage.getItem("favourite")) === null
+      ? array
+      : JSON.parse(window.localStorage.getItem("favourite"));
+
   return (
     <>
-      {array.find((it) => it.id === item.id) ? (
+      {favouriteCatalog.find((it) => it.id === item.id) ? (
         <span
           onClick={() => {
             onRemoveFromFavouriteClick(item);
@@ -30,3 +37,10 @@ export default function FavouriteButton({
     </>
   );
 }
+
+FavouriteButton.protoType = {
+  array: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onRemoveFromFavouriteClick: PropTypes.func.isRequired,
+  onAddToFavouriteClick: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+};

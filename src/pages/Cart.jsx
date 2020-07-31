@@ -5,14 +5,23 @@ import { removeFromCart, deleteAllFromCart } from "../redux/actions/cart";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const { cartCatalog } = useSelector(({ cart }) => ({
-    cartCatalog: cart.catalog,
+  const { cartReduxCatalog } = useSelector(({ cart }) => ({
+    cartReduxCatalog: cart.catalog,
   }));
+
+  // checking cart in localStorage
+  let cartCatalog =
+    JSON.parse(window.localStorage.getItem("cart")) === null
+      ? cartReduxCatalog
+      : JSON.parse(window.localStorage.getItem("cart"));
 
   // deleting all from cart
   const onClearButtonClick = () => {
     dispatch(deleteAllFromCart());
+    window.localStorage.setItem("cart", JSON.stringify([]));
   };
+
+  // math middle price
   const middle =
     cartCatalog.reduce((sum, obj) => obj.price + sum, 0) / cartCatalog.length;
 
@@ -27,6 +36,13 @@ export default function Cart() {
                 <span className="cart__list-price">{item.price} UAH</span>
                 <span
                   onClick={() => {
+                    let localArr = JSON.parse(
+                      window.localStorage.getItem("cart")
+                    ).filter((it) => it.uniqId !== item.uniqId);
+                    window.localStorage.setItem(
+                      "cart",
+                      JSON.stringify(localArr)
+                    );
                     dispatch(removeFromCart(item.uniqId));
                   }}
                   className="cart__list-close"

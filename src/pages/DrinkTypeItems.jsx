@@ -5,7 +5,7 @@ import {
   removeFromFavourite,
   addToFavourite,
 } from "../redux/actions/favourite";
-import TypeItem from "../components/TypeItem";
+import DrinkTypeItem from "../components/DrinkTypeItem";
 import {
   addToCart,
   isAddingToCart,
@@ -14,6 +14,7 @@ import {
 } from "../redux/actions/cart";
 import teaimg from "../assets/img/tea.jpg";
 import coffeeimg from "../assets/img/coffee-paccage.png";
+import PropTypes from "prop-types";
 
 // openning from Route
 export default function DrinkTypeItems({ type }) {
@@ -38,10 +39,14 @@ export default function DrinkTypeItems({ type }) {
     isAddingtoCart: state.cart.isAddingtoCart,
   }));
 
+  const catalogTitle = activeCatalogTitle
+    ? activeCatalogTitle
+    : window.localStorage.getItem("catalogName");
+
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // sorting array by drink type
+  // sorting array by drink type from params
   const typeArray = type.tea
     ? teaCatalog.filter((item) => item.type === +param.type)
     : coffeeCatalog.filter((item) => item.type === +param.type);
@@ -51,14 +56,37 @@ export default function DrinkTypeItems({ type }) {
     type.tea ? history.push("/tea") : history.push("/coffee");
   };
 
-  const onAddToFavouriteClick = (id) => {
-    dispatch(addToFavourite(id));
+  const onAddToFavouriteClick = (item) => {
+    dispatch(addToFavourite(item));
+    let localArr =
+      window.localStorage.getItem("favourite") == null
+        ? [item]
+        : [...JSON.parse(window.localStorage.getItem("favourite")), item];
+
+    window.localStorage.setItem("favourite", JSON.stringify(localArr));
   };
-  const onRemoveFromFavouriteClick = (id) => {
-    dispatch(removeFromFavourite(id));
+
+  const onRemoveFromFavouriteClick = (item) => {
+    dispatch(removeFromFavourite(item));
+    let localArr = JSON.parse(window.localStorage.getItem("favourite")).filter(
+      (it) => {
+        return it.id !== item.id;
+      }
+    );
+
+    window.localStorage.setItem("favourite", JSON.stringify(localArr));
   };
 
   const onAddToCartButtonClick = (item) => {
+    let localArr =
+      window.localStorage.getItem("cart") == null
+        ? [item]
+        : [
+            ...JSON.parse(window.localStorage.getItem("cart")),
+            { ...item, uniqId: Math.random() * 100 },
+          ];
+
+    window.localStorage.setItem("cart", JSON.stringify(localArr));
     dispatch(isAddingToCart(true));
     dispatch(addActiveCartButton(item.id));
     setTimeout(() => {
@@ -77,10 +105,10 @@ export default function DrinkTypeItems({ type }) {
       </div>
 
       <div className="col-md-11">
-        <h3 className="coffee__type-title">{activeCatalogTitle}</h3>
+        <h3 className="coffee__type-title">{catalogTitle}</h3>
         <div className="coffee__type-items">
           {typeArray.map((item) => (
-            <TypeItem
+            <DrinkTypeItem
               activeCartButton={activeCartButton}
               isAddingtoCart={isAddingtoCart}
               isAdmin={isAdmin}
@@ -98,3 +126,7 @@ export default function DrinkTypeItems({ type }) {
     </>
   );
 }
+
+DrinkTypeItems.propTypes = {
+  type: PropTypes.object.isRequired,
+};

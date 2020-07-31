@@ -5,17 +5,19 @@ import { setIsVisibleCatalog } from "../redux/actions/catalog";
 
 export default function CatalogPopup() {
   const dispatch = useDispatch();
+  const { isVisibleCatalog } = useSelector((state) => state.catalog);
+
+  // hiding popup
   const onCatalogListClick = () => {
     dispatch(setIsVisibleCatalog(false));
   };
 
-  const { isVisibleCatalog } = useSelector((state) => state.catalog);
   return (
     <div className="row">
       <div onClick={onCatalogListClick} className="categories_popup">
         {isVisibleCatalog && (
           <>
-            {/* openning DrinkType tea/coffee */}
+            {/* openning DrinkType component tea/coffee */}
             <Link to="/coffee">Coffee</Link>
             <Link to="/tea">Tea</Link>
             <span

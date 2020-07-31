@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Header, CatalogPopup } from "./components";
-import { Sort, Cart, DrinkTypeItems, DrinkType, Favourite } from "./pages";
+import { MainMenu, Cart, DrinkTypeItems, DrinkTypes, Favourite } from "./pages";
 import { Route } from "react-router-dom";
 import Axios from "axios";
 
@@ -33,17 +33,17 @@ const App = React.memo(() => {
         <div className="row">
           <Route path="/cart" component={Cart} />
           <Route path="/favourite" component={Favourite} />
-          <Route path="/" component={Sort} exact />
+          <Route path="/" component={MainMenu} exact />
           <Route
             path="/coffee"
             render={() => {
-              return <DrinkType type={{ tea: false }} />;
+              return <DrinkTypes type={{ tea: false }} />;
             }}
           />
           <Route
             path="/tea"
             render={() => {
-              return <DrinkType type={{ tea: true }} />;
+              return <DrinkTypes type={{ tea: true }} />;
             }}
           />
           <Route
