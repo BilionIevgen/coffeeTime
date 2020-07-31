@@ -1,0 +1,29 @@
+@import "./icons.scss";
+@import "./coffee.scss";
+@import "./header.scss";
+@import "./cart.scss";
+@import "./favourite.scss";
+@import "./sort-menu.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+}
+
+.button {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 4px;
+  outline: none;
+  margin-right: 15px;
+  padding: 3px 7px;
+  &:active {
+    border: 2px solid grey;
+    transform: translateY(2px);
+  }
+}

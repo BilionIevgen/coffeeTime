@@ -1,0 +1,206 @@
+{
+  "tea": {
+    "types": [
+      {
+        "id": 0,
+        "name": "Черный",
+        "type": 0,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/Black_tea.jpg"
+      },
+      {
+        "id": 1,
+        "name": "Зеленый",
+        "type": 1,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/Green_tea_150.gif"
+      },
+      {
+        "id": 2,
+        "name": "Фруктовый",
+        "type": 2,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/Fruit_tea.gif"
+      },
+      {
+        "id": 3,
+        "name": "Травяной",
+        "type": 3,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/Herbal_Tea.jpg"
+      }
+    ],
+    "catalog": [
+      {
+        "id": 4,
+        "name": "Cascara",
+        "type": 0,
+        "price": 56.567
+      },
+      {
+        "id": 5,
+        "name": "Worka",
+        "type": 1,
+        "price": 101.567
+      },
+      {
+        "id": 6,
+        "name": "Ethiopia",
+        "type": 2,
+        "price": 202.567
+      },
+      {
+        "id": 7,
+        "name": "Chelchelie",
+        "type": 3,
+        "price": 303.567
+      },
+      {
+        "id": 8,
+        "name": "Don Joaquin",
+        "type": 0,
+        "price": 404.567
+      },
+      {
+        "id": 9,
+        "name": "Honduras",
+        "type": 1,
+        "price": 505.567
+      },
+      {
+        "id": 10,
+        "name": "Guatemala",
+        "type": 2,
+        "price": 606.567
+      },
+      {
+        "id": 11,
+        "name": "Nicaragua",
+        "type": 3,
+        "price": 707.567
+      },
+      {
+        "id": 12,
+        "name": "La Florida",
+        "type": 0,
+        "price": 808.567
+      },
+      {
+        "id": 13,
+        "name": "Yigacheffe",
+        "type": 1,
+        "price": 909.567
+      },
+      {
+        "id": 14,
+        "name": "Papua",
+        "type": 2,
+        "price": 100.567
+      },
+      {
+        "id": 15,
+        "name": "В монодозах",
+        "type": 3,
+        "price": 200.567
+      }
+    ]
+  },
+  "coffee": {
+    "types": [
+      {
+        "id": 16,
+        "name": "В зернах",
+        "type": 0,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/Coffee_beans.gif"
+      },
+      {
+        "id": 17,
+        "name": "Молотый",
+        "type": 1,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/ground_coffee.gif"
+      },
+      {
+        "id": 18,
+        "name": "В капсулах",
+        "type": 2,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/coffee_capsules.gif"
+      },
+      {
+        "id": 19,
+        "name": "В монодозах",
+        "type": 3,
+        "img": "https://coffee-shop.net.ua/media/catalog/category/Monosortcofe.gif"
+      }
+    ],
+    "catalog": [
+      {
+        "id": 20,
+        "name": "Cascara",
+        "type": 0,
+        "price": 56.567
+      },
+      {
+        "id": 21,
+        "name": "Worka",
+        "type": 1,
+        "price": 101.567
+      },
+      {
+        "id": 22,
+        "name": "Ethiopia",
+        "type": 2,
+        "price": 202.567
+      },
+      {
+        "id": 23,
+        "name": "Chelchelie",
+        "type": 3,
+        "price": 303.567
+      },
+      {
+        "id": 24,
+        "name": "Don Joaquin",
+        "type": 0,
+        "price": 404.567
+      },
+      {
+        "id": 25,
+        "name": "Honduras",
+        "type": 1,
+        "price": 505.567
+      },
+      {
+        "id": 26,
+        "name": "Guatemala",
+        "type": 2,
+        "price": 606.567
+      },
+      {
+        "id": 27,
+        "name": "Nicaragua",
+        "type": 3,
+        "price": 707.567
+      },
+      {
+        "id": 28,
+        "name": "La Florida",
+        "type": 0,
+        "price": 808.567
+      },
+      {
+        "id": 29,
+        "name": "Yigacheffe",
+        "type": 1,
+        "price": 909.567
+      },
+      {
+        "id": 30,
+        "name": "Papua",
+        "type": 2,
+        "price": 100.567
+      },
+      {
+        "id": 31,
+        "name": "В монодозах",
+        "type": 3,
+        "price": 200.567
+      }
+    ]
+  }
+}

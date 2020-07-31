@@ -1,0 +1,62 @@
+.coffee__types {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.coffee__type {
+  cursor: pointer;
+  max-width: 250px;
+  width: 100%;
+  margin-top: 60px;
+}
+.coffee__type-title {
+  text-align: center;
+  margin-top: 70px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.coffee__type-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.coffee__type-item {
+  max-width: 250px;
+  width: 100%;
+  margin: 10px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  .favorite,
+  .remove-favorite {
+    margin-bottom: 10px;
+    margin-left: auto;
+  }
+  img {
+    margin: 0 auto;
+    max-width: 150px;
+    margin-bottom: 10px;
+  }
+  .coffee__type-name {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .coffee__type-purches {
+    display: flex;
+    justify-content: space-between;
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      border-radius: 4px;
+      outline: none;
+      margin-right: 15px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.search_pannel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  input {
+    max-width: 600px;
+    width: 100%;
+    outline-offset: 1px;
+    padding-left: 10px;
+  }
+  .material-icons {
+    font-size: 42px;
+
+    right: 0;
+    cursor: default;
+  }
+}
+
+.sort-menu {
+}
