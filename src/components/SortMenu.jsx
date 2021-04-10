@@ -21,13 +21,6 @@ const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
   const favouriteArray = useSelector((state) => state.favourite.catalog);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
 
-  // i decided to add this force rerender because when we calling setInitialDrinkItems() React dont call rerender! I know its bad practice but i dont ask for help because it is test task
-  function useForceUpdate() {
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue((value) => ++value); // update the state to force
-  }
-  const update = useForceUpdate();
-
   // sorting by input value
   const onInputChange = (e) => {
     setInputValue(e.target.value.toLowerCase());
@@ -43,7 +36,6 @@ const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
   const sortByPrice = () => {
     let newArr = items.sort((a, b) => a.price - b.price);
     setInitialDrinkItems(newArr);
-    update();
   };
 
   // sorting by name
@@ -56,7 +48,6 @@ const SortMenu = ({ items, activeCartButton, isAddingtoCart }) => {
         : 0
     );
     setInitialDrinkItems(newArr);
-    update();
   };
 
   // adding to favourite list
