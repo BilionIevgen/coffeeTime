@@ -12,7 +12,7 @@ const App = React.memo(() => {
 
   // getting data from fake server
   useEffect(() => {
-    Axios.get("http://localhost:3000/db.json").then((res) => {
+    Axios.get("https://coffee-time-seven.vercel.app/db.json").then((res) => {
       dispatch(setCoffee(res.data.coffee));
       dispatch(setTea(res.data.tea));
     });
